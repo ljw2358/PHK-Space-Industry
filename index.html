@@ -1,240 +1,228 @@
-<!doctype html>
-<html lang="en">
+
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="PHK Space Industry — Space Robotics, Orbital Systems, Launch & Infrastructure Automation." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>PHK Space Industry</title>
+  <meta name="description" content="PHK Space Industry — Space infrastructure, orbital industry, and next-generation aerospace systems." />
+  <meta name="theme-color" content="#0b0f18" />
 
   <style>
     :root{
-      --bg:#05070c;
-      --card:#0b1220;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --line:#1f2937;
-      --accent:#38bdf8;
-      --accent2:#22c55e;
+      --bg1:#070a10; --bg2:#0b0f18;
+      --card:#0f1623; --text:#e9eef9;
+      --muted:rgba(233,238,249,.6);
+      --line:rgba(255,255,255,.10);
+      --accent:#7aa7ff; --yellow:#ffcc33;
+      --radius:24px; --max:720px;
+      --shadow:0 20px 60px rgba(0,0,0,.6);
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple SD Gothic Neo","Noto Sans KR", sans-serif;
+      margin:0; color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto,
+        "Noto Sans KR","Noto Sans Arabic",sans-serif;
       background:
-        radial-gradient(1200px 700px at 20% 0%, #0b1c3d 0%, var(--bg) 60%),
-        radial-gradient(900px 600px at 80% 10%, #062b22 0%, var(--bg) 65%);
-      color:var(--text);
-      line-height:1.6;
+        radial-gradient(1200px 700px at 20% -10%, rgba(122,167,255,.12), transparent 55%),
+        radial-gradient(1200px 700px at 80% 10%, rgba(255,204,51,.10), transparent 55%),
+        linear-gradient(180deg,var(--bg1),var(--bg2));
     }
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
-    header{
-      display:flex;justify-content:space-between;align-items:center;gap:12px;
-      padding:14px 16px;border:1px solid var(--line);border-radius:16px;
-      background: rgba(11,18,32,.75);backdrop-filter: blur(10px);
+    .wrap{max-width:var(--max);margin:0 auto;padding:18px 16px 48px}
+
+    /* Top */
+    .top{display:flex;justify-content:space-between;align-items:center}
+    .brand{display:flex;gap:10px;align-items:center}
+    .dot{width:16px;height:16px;border-radius:50%;background:#fff}
+    .brandName{font-weight:900;font-size:18px}
+
+    .lang{position:relative}
+    .langBtn{
+      border:1px solid var(--line);background:rgba(255,255,255,.06);
+      color:var(--text);padding:10px 14px;border-radius:999px;
+      font-weight:800;cursor:pointer
     }
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{
-      width:40px;height:40px;border-radius:12px;
-      background: linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 12px 40px rgba(56,189,248,.35);
+    .langMenu{
+      display:none;position:absolute;right:0;top:46px;
+      background:rgba(12,18,32,.95);
+      border:1px solid var(--line);border-radius:16px;overflow:hidden
     }
-    .brand h1{margin:0;font-size:16px}
-    .brand p{margin:2px 0 0;font-size:12px;color:var(--muted)}
-    .lang{
-      display:flex;gap:6px;padding:6px;border:1px solid var(--line);
-      border-radius:14px;background:rgba(15,23,42,.55)
+    .langMenu button{
+      width:100%;padding:10px 14px;border:0;
+      background:transparent;color:var(--text);
+      text-align:left;font-weight:800;cursor:pointer
     }
-    .lang button{
-      background:transparent;border:1px solid transparent;color:var(--text);
-      padding:8px 10px;border-radius:12px;font-size:12px;cursor:pointer;opacity:.85
+    .langMenu button:hover{background:rgba(255,255,255,.08)}
+    .langMenu.show{display:block}
+
+    /* Hero */
+    .hero{text-align:center;margin-top:18px}
+    .icon{
+      width:90px;height:90px;margin:0 auto 12px;border-radius:26px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(122,167,255,.6), transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(255,204,51,.6), transparent 60%),
+        rgba(255,255,255,.06);
+      display:grid;place-items:center
     }
-    .lang button.active{
-      background:rgba(56,189,248,.18);
-      border-color:rgba(56,189,248,.35);opacity:1
-    }
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
-    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+    .icon span{font-size:40px;font-weight:1000}
+    .title{font-size:44px;font-weight:1000}
+    .tagline{letter-spacing:.28em;color:var(--muted);font-weight:800}
+    .motto{margin-top:14px;font-size:24px;font-weight:1000;color:var(--yellow)}
+
+    /* Section */
+    .section{margin-top:28px}
+    .label{font-weight:900;font-size:18px;margin-bottom:10px}
+
     .card{
-      border:1px solid var(--line);border-radius:18px;
-      background:rgba(11,18,32,.75);padding:18px
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px 20px;margin:14px 0;
+      box-shadow:var(--shadow)
     }
-    .headline{margin:0 0 10px;font-size:28px}
-    .sub{margin:0 0 14px;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    @media(max-width:700px){.grid{grid-template-columns:1fr}}
-    .mini{
-      border:1px solid var(--line);border-radius:16px;
-      padding:14px;background:rgba(15,23,42,.55)
+    .card h3{margin:0 0 8px;font-size:30px}
+    .card p{margin:0;color:var(--muted);font-weight:800}
+    .sub{margin-top:8px;color:rgba(233,238,249,.4);font-weight:800}
+
+    /* Contact */
+    .contact{
+      margin-top:26px;padding:18px;
+      border-radius:18px;border:1px solid var(--line);
+      background:rgba(255,255,255,.05)
     }
-    .mini h3{margin:0 0 6px;font-size:14px}
-    .mini p{margin:0;font-size:13px;color:var(--muted)}
-    .section{margin-top:16px}
-    footer{
-      margin-top:18px;padding:14px;border:1px solid var(--line);
-      border-radius:16px;background:rgba(15,23,42,.55);
-      display:flex;justify-content:space-between;flex-wrap:wrap;
-      font-size:12px;color:var(--muted)
+    .contactRow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .email{font-weight:1000;text-decoration:underline}
+    .copy{
+      border:1px solid var(--line);background:rgba(255,255,255,.06);
+      color:var(--text);border-radius:999px;
+      padding:8px 12px;font-weight:900;cursor:pointer
     }
-    .hide{display:none}
-    [dir="rtl"]{text-align:right}
   </style>
 </head>
 
 <body>
 <div class="wrap">
 
-<header>
-  <div class="brand">
-    <div class="logo"></div>
-    <div>
-      <h1>PHK Space Industry</h1>
-      <p id="tagline">Space Robotics & Orbital Infrastructure</p>
+  <!-- Top -->
+  <div class="top">
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="brandName">PHK Space</div>
+    </div>
+    <div class="lang">
+      <button class="langBtn" id="langBtn">한국어</button>
+      <div class="langMenu" id="langMenu">
+        <button data-lang="ko">한국어</button>
+        <button data-lang="en">English</button>
+        <button data-lang="ar">العربية</button>
+      </div>
     </div>
   </div>
-  <div class="lang">
-    <button id="en" class="active" onclick="setLang('en')">EN</button>
-    <button id="ko" onclick="setLang('ko')">KO</button>
-    <button id="ar" onclick="setLang('ar')">AR</button>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="icon"><span>🚀</span></div>
+    <div class="title">PHK Space Industry</div>
+    <div class="tagline" id="t_tagline">BEYOND EARTH · BEYOND INDUSTRY</div>
+    <div class="motto" id="t_motto">우주를 산업으로 만든다</div>
   </div>
-</header>
 
-<!-- EN -->
-<main id="en-c" class="hero">
-  <section class="card">
-    <h2 class="headline">Automation beyond Earth.</h2>
-    <p class="sub">
-      PHK Space Industry develops robotic systems and automation technologies
-      for space operations — from launch infrastructure to orbital servicing
-      and future off-world construction.
-    </p>
-    <ul class="sub">
-      <li>Space Robotics & Remote Operation</li>
-      <li>Launch Site & Ground Automation</li>
-      <li>Orbital Maintenance & Assembly</li>
-      <li>Future Lunar / Space Infrastructure</li>
-    </ul>
-  </section>
+  <!-- Core -->
+  <div class="section">
+    <div class="label" id="t_core">Core Domains</div>
 
-  <aside class="card">
-    <h3>Core Domains</h3>
-    <div class="grid">
-      <div class="mini">
-        <h3>Launch Automation</h3>
-        <p>Robotic handling, inspection, and safety systems.</p>
-      </div>
-      <div class="mini">
-        <h3>Orbital Robotics</h3>
-        <p>Servicing, repair, and modular assembly in orbit.</p>
-      </div>
-      <div class="mini">
-        <h3>Space Infrastructure</h3>
-        <p>Robotic construction for stations and lunar bases.</p>
-      </div>
-      <div class="mini">
-        <h3>Extreme Environment Tech</h3>
-        <p>Radiation-safe, vacuum-ready robotic platforms.</p>
-      </div>
+    <div class="card">
+      <h3 id="t_orbit">궤도 산업</h3>
+      <p id="t_orbit_p">저궤도 · 중궤도 · 심우주 인프라</p>
+      <div class="sub" id="t_orbit_s">위성 · 정거장 · 궤도 물류</div>
     </div>
-  </aside>
 
-  <section class="card section" style="grid-column:1/-1">
-    <h3>Contact</h3>
-    <p>Email:
-      <a href="mailto:info@phkspace.com" style="color:var(--accent)">
-        info@phkspace.com
-      </a>
-    </p>
-  </section>
-</main>
-
-<!-- KO -->
-<main id="ko-c" class="hero hide">
-  <section class="card">
-    <h2 class="headline">지구를 넘어선 자동화.</h2>
-    <p class="sub">
-      PHK Space Industry는 발사 인프라부터 궤도 유지보수,
-      미래 우주 건설까지 아우르는 우주 로봇·자동화 기술을 개발합니다.
-    </p>
-    <ul class="sub">
-      <li>우주 로봇 및 원격 운용</li>
-      <li>발사장 자동화 시스템</li>
-      <li>궤도 유지·조립 로봇</li>
-      <li>달·우주 인프라 구축</li>
-    </ul>
-  </section>
-
-  <aside class="card">
-    <h3>핵심 분야</h3>
-    <div class="grid">
-      <div class="mini"><h3>발사 자동화</h3><p>로봇 기반 취급·검사·안전 시스템</p></div>
-      <div class="mini"><h3>궤도 로봇</h3><p>정비·수리·조립 자동화</p></div>
-      <div class="mini"><h3>우주 인프라</h3><p>정거장·달 기지 로봇 건설</p></div>
-      <div class="mini"><h3>극한 환경 기술</h3><p>방사선·진공 대응 플랫폼</p></div>
+    <div class="card">
+      <h3 id="t_launch">발사·운송</h3>
+      <p id="t_launch_p">우주 운송 및 자동화 시스템</p>
+      <div class="sub" id="t_launch_s">재사용 · 무인 · 로봇 연계</div>
     </div>
-  </aside>
 
-  <section class="card section" style="grid-column:1/-1">
-    <h3>문의</h3>
-    <p>Email:
-      <a href="mailto:info@phkspace.com" style="color:var(--accent)">
-        info@phkspace.com
-      </a>
-    </p>
-  </section>
-</main>
-
-<!-- AR -->
-<main id="ar-c" class="hero hide" dir="rtl">
-  <section class="card">
-    <h2 class="headline">أتمتة تتجاوز الأرض.</h2>
-    <p class="sub">
-      تطوّر PHK Space Industry أنظمة روبوتية وتقنيات أتمتة
-      لعمليات الإطلاق والصيانة المدارية والبنية التحتية الفضائية المستقبلية.
-    </p>
-    <ul class="sub">
-      <li>روبوتات فضائية وتشغيل عن بُعد</li>
-      <li>أتمتة مواقع الإطلاق</li>
-      <li>صيانة وتجميع مداري</li>
-      <li>بنية تحتية قمرية وفضائية</li>
-    </ul>
-  </section>
-
-  <aside class="card">
-    <h3>المجالات الأساسية</h3>
-    <div class="grid">
-      <div class="mini"><h3>أتمتة الإطلاق</h3><p>أنظمة فحص وسلامة روبوتية</p></div>
-      <div class="mini"><h3>روبوتات مدارية</h3><p>خدمة وصيانة وتجميع</p></div>
-      <div class="mini"><h3>بنية فضائية</h3><p>بناء محطات وقواعد قمرية</p></div>
-      <div class="mini"><h3>تقنيات بيئات قاسية</h3><p>منصات مقاومة للإشعاع والفراغ</p></div>
+    <div class="card">
+      <h3 id="t_defense">우주 안보</h3>
+      <p id="t_defense_p">국가·산업 보호 인프라</p>
+      <div class="sub" id="t_defense_s">감시 · 통신 · 전략 자산</div>
     </div>
-  </aside>
+  </div>
 
-  <section class="card section" style="grid-column:1/-1">
-    <h3>التواصل</h3>
-    <p>
-      <a href="mailto:info@phkspace.com" style="color:var(--accent)">
-        info@phkspace.com
-      </a>
-    </p>
-  </section>
-</main>
+  <!-- Framework -->
+  <div class="section">
+    <div class="label" id="t_frame">Framework</div>
 
-<footer>
-  <div>© <span id="y"></span> PHK Space Industry</div>
-  <div>Email: info@phkspace.com</div>
-</footer>
+    <div class="card">
+      <h3>PHK Space Framework</h3>
+      <p id="t_frame_p">PHK Space는 로봇·에너지·금융과 연결된 우주 산업 프레임입니다.</p>
+      <div class="sub" id="t_frame_s">Space × Robotics × Energy × Finance</div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact">
+    <div class="contactRow">
+      <div>
+        <div style="font-weight:900">Contact</div>
+        <div>Email: <a class="email" id="emailLink" href="mailto:info@phkspaceindustry.com">info@phkspaceindustry.com</a></div>
+      </div>
+      <button class="copy" id="copyBtn">Copy</button>
+    </div>
+  </div>
 
 </div>
 
 <script>
-  const map={en:"en-c",ko:"ko-c",ar:"ar-c"};
-  function setLang(l){
-    Object.values(map).forEach(id=>document.getElementById(id).classList.add("hide"));
-    document.getElementById(map[l]).classList.remove("hide");
-    ["en","ko","ar"].forEach(x=>document.getElementById(x).classList.remove("active"));
-    document.getElementById(l).classList.add("active");
+(function(){
+  const EMAIL="info@phkspaceindustry.com";
+  const T={
+    ko:{lang:"한국어",tagline:"BEYOND EARTH · BEYOND INDUSTRY",motto:"우주를 산업으로 만든다",
+        core:"Core Domains",orbit:"궤도 산업",orbit_p:"저궤도 · 중궤도 · 심우주 인프라",orbit_s:"위성 · 정거장 · 궤도 물류",
+        launch:"발사·운송",launch_p:"우주 운송 및 자동화 시스템",launch_s:"재사용 · 무인 · 로봇 연계",
+        defense:"우주 안보",defense_p:"국가·산업 보호 인프라",defense_s:"감시 · 통신 · 전략 자산",
+        frame:"Framework",frame_p:"PHK Space는 로봇·에너지·금융과 연결된 우주 산업 프레임입니다.",frame_s:"Space × Robotics × Energy × Finance"},
+    en:{lang:"English",tagline:"BEYOND EARTH · BEYOND INDUSTRY",motto:"Turning space into industry",
+        core:"Core Domains",orbit:"Orbital Industry",orbit_p:"LEO · MEO · Deep-space infrastructure",orbit_s:"Satellites · stations · orbital logistics",
+        launch:"Launch & Transport",launch_p:"Space transport and automation systems",launch_s:"Reusable · autonomous · robotic",
+        defense:"Space Security",defense_p:"National & industrial protection infrastructure",defense_s:"Surveillance · communications · strategic assets",
+        frame:"Framework",frame_p:"PHK Space is an integrated space industry framework connected with robotics, energy, and finance.",frame_s:"Space × Robotics × Energy × Finance"},
+    ar:{lang:"العربية",tagline:"ما بعد الأرض · ما بعد الصناعة",motto:"نحو صناعة فضائية",
+        core:"المجالات الأساسية",orbit:"الصناعة المدارية",orbit_p:"بنية تحتية فضائية متعددة المدارات",orbit_s:"أقمار · محطات · لوجستيات مدارية",
+        launch:"الإطلاق والنقل",launch_p:"أنظمة نقل فضائي آلية",launch_s:"قابلة لإعادة الاستخدام · ذاتية",
+        defense:"أمن الفضاء",defense_p:"حماية وطنية وصناعية",defense_s:"مراقبة · اتصالات · أصول استراتيجية",
+        frame:"الإطار",frame_p:"PHK Space هو إطار صناعي فضائي متكامل مع الروبوتات والطاقة والتمويل.",frame_s:"Space × Robotics × Energy × Finance"}
+  };
+
+  const langBtn=document.getElementById("langBtn");
+  const menu=document.getElementById("langMenu");
+  langBtn.onclick=()=>menu.classList.toggle("show");
+  menu.onclick=e=>{
+    const l=e.target.dataset.lang;if(!l)return;
+    apply(l);menu.classList.remove("show");
+  };
+
+  function apply(l){
+    const d=T[l];
+    langBtn.textContent=d.lang;
     document.documentElement.lang=l;
     document.documentElement.dir=(l==="ar")?"rtl":"ltr";
+    for(const k in d){
+      const el=document.getElementById("t_"+k);
+      if(el) el.textContent=d[k];
+    }
   }
-  document.getElementById("y").textContent=new Date().getFullYear();
+
+  document.getElementById("copyBtn").onclick=()=>{
+    navigator.clipboard.writeText(EMAIL);
+    alert("Copied: "+EMAIL);
+  };
+
+  apply("ko");
+})();
 </script>
+
+</body>
+</html>
